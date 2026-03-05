@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "bingebox",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "bingebox", "run", "dev"],
+      "port": 5173
+    }
+  ]
+}

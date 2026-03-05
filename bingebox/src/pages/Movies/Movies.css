@@ -1,0 +1,59 @@
+.movies-page {
+  margin: clamp(24px, 4vw, 60px);
+  margin-bottom: 30px;
+  min-height: 100vh;
+}
+
+.movies-page-title {
+  color: var(--text-primary);
+  font-size: clamp(24px, 3vw, 40px);
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+/* Category tabs */
+.movies-tabs {
+  display: flex;
+  gap: clamp(8px, 1vw, 16px);
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  margin-bottom: clamp(24px, 4vw, 60px);
+}
+
+.movies-tab {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  padding: clamp(6px, 0.8vw, 10px) clamp(14px, 1.5vw, 24px);
+  border-radius: 50px;
+  font-family: 'Quicksand', sans-serif;
+  font-size: clamp(12px, 1.1vw, 18px);
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.movies-tab:hover {
+  border-color: var(--accent-soft);
+  color: var(--accent-soft);
+}
+
+.movies-tab.active {
+  background: var(--gradient-soft);
+  border-color: transparent;
+  color: white;
+}
+
+/* Responsive grid — flex instead of grid so the last row centers too.
+   Each card has a fixed responsive width (same clamp as MovieCard itself).
+   justify-content: center means every row, including partial last rows,
+   is always centered rather than left-aligned. */
+.movies-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(10px, 1.5vw, 25px);
+}

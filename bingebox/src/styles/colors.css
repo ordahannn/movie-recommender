@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --background:       #0a0a0f;
+  --surface:          #13131a;
+  --surface-elevated: #1c1c27;
+  --border:           #2a2a3d;
+
+  --accent:           #9361ae;
+  --accent-soft:      #b07fd0;
+  --accent-muted:     #9361ae20;
+  --accent-soft-muted:#b07fd020;
+
+  --text-primary:     #f0f0f5;
+  --text-secondary:   #9090a8;
+  --text-muted:       #505068;
+  --text-shadow:      #dca6ffde;
+
+  --success:          #1adb7a;
+  --success-muted:    #1adb7a20;
+  --warning:          #e09400;
+  --warning-muted:    #e0940020;
+  --error:            #e02d2d;
+  --error-muted:      #e02d2d20;
+
+  --gradient-primary: linear-gradient(175deg, #9361ae, #422159);
+  --gradient-soft:    linear-gradient(175deg, #9361ae, #b07fd0);
+  --gradient-accent:  linear-gradient(175deg, #9361ae, #ae6181);
+  --gradient-dark:    linear-gradient(175deg, #13131a, #1c1c27);
+  --gradient-glow:    linear-gradient(180deg, #9361ae20, #371d4a20);
+
+  font-family: 'Quicksand', sans-serif;
+}

@@ -1,0 +1,126 @@
+.login-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--background);
+    padding: 16px;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.login-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 40px 32px;
+    width: clamp(380px, 50vw, 600px);
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.login-logo {
+    width: 56px;
+    margin-bottom: 12px;
+}
+
+.login-header h1 {
+    font-size: clamp(24px, 3vw, 44px);
+    font-weight: 700;
+    margin: 0 0 4px;
+    color: var(--text-primary);
+}
+
+.login-header img {
+    width: clamp(80px, 5vw, 100px);
+    filter: drop-shadow(0 0 14px var(--text-shadow));
+}
+
+.login-subtitle {
+    color: var(--text-muted);
+    margin: 0;
+    font-size: clamp(18px, 2vw, 22px);
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(24px, 2vw, 35px);
+}
+
+.login-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.login-field label {
+    font-size: clamp(14px, 2vw, 18px);
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.login-field input {
+    background: var(--surface-elevated);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    color: var(--accent-soft);
+    font-size: clamp(12px, 2vw, 16px);
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.login-field input::placeholder {
+    color: var(--text-muted);
+}
+
+.login-field input:focus {
+    border-color: var(--accent-soft);
+}
+
+.login-error {
+    color: var(--error);
+    font-size: clamp(14px, 2vw, 18px);
+    margin: 0;
+    padding: 8px 10px;
+    background: var(--error-muted);
+    border-radius: 6px;
+}
+
+.login-btn {
+    background: var(--gradient-soft);
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-family: 'Quicksand', sans-serif;
+    padding: 10px;
+    font-size: clamp(14px, 2vw, 18px);
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 4px;
+    transition: opacity 0.2s;
+}
+
+.login-btn:hover {
+    opacity: 0.85;
+}
+
+.login-btn:hover:not(:disabled) {
+  transition: opacity 0.2s;
+}
+
+.login-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.login-hint {
+    margin: 24px 0 0;
+    text-align: center;
+    font-size: clamp(10px, 2vw, 14px);
+    color: var(--text-muted);
+    line-height: 1.6;
+}

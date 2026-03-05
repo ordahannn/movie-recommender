@@ -22,9 +22,12 @@ from collections import Counter
 
 app = Flask(__name__)
 
-# CORS — allow the frontend origin (set FRONTEND_URL env var in production)
-_frontend = os.environ.get('FRONTEND_URL', 'http://localhost:5173')
-CORS(app, origins=[_frontend, 'http://127.0.0.1:5173'])
+# CORS — allow all Vercel deployments + localhost for dev
+CORS(app, origins=[
+    r"https://.*\.vercel\.app",
+    "http://localhost:5173",
+    "http://127.0.0.1:5173"
+], supports_credentials=True)
 
 # JWT config — secret loaded from env var, fallback only for local dev
 app.config['JWT_SECRET_KEY'] = os.environ.get('JWT_SECRET_KEY', 'change-this-in-production-use-env-var')

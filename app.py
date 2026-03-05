@@ -68,14 +68,7 @@ mlb = MultiLabelBinarizer()
 genre_matrix = mlb.fit_transform(movies['genres'].str.split('|'))
 movie_id_to_pos = {mid: pos for pos, mid in enumerate(movies['movieId'])}
 
-print("🎬 Computing movies similarity matrix...")
-
-movie_sim = cosine_similarity(user_movie_matrix.values.T)
-movie_sim_df = pd.DataFrame(
-    movie_sim,
-    index=user_movie_matrix.columns,
-    columns=user_movie_matrix.columns
-)
+print("✅ Ready — movie similarity computed on demand per request")
 
 # Recommendations Functions
 def recommend_for_user(user_id, n_similar=20, n_recs=30):
@@ -105,18 +98,23 @@ def recommend_for_user(user_id, n_similar=20, n_recs=30):
     return [movie_id for movie_id, _ in ranked[:n_recs]]
 
 def similar_to_movie(movie_id, n=20, alpha=0.6):
-    if movie_id not in movie_sim_df.index:
+    if movie_id not in user_movie_matrix.columns:
         return []
 
-    # CF similarity scores
-    cf_scores = movie_sim_df[movie_id].drop(index=movie_id)
+    # CF: compute similarity for just this one movie column (on demand, not precomputed)
+    movie_vec = user_movie_matrix[movie_id].values.reshape(1, -1)
+    all_vecs  = user_movie_matrix.values.T          # shape: (n_movies, n_users) — ~47 MB, not 760 MB
+    cf_sims   = cosine_similarity(movie_vec, all_vecs)[0]
+
+    cf_scores = pd.Series(cf_sims, index=user_movie_matrix.columns)
+    cf_scores = cf_scores.drop(index=movie_id, errors='ignore')
 
     # Genre cosine similarity
     pos = movie_id_to_pos.get(movie_id)
     if pos is None:
         return cf_scores.sort_values(ascending=False).head(n).index.tolist()
 
-    target_vec = genre_matrix[pos].reshape(1, -1)
+    target_vec     = genre_matrix[pos].reshape(1, -1)
     all_genre_sims = cosine_similarity(target_vec, genre_matrix)[0]
 
     genre_series = pd.Series(all_genre_sims, index=movies['movieId'])

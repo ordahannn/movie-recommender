@@ -77,6 +77,8 @@ function Login() {
                             placeholder="demo123"
                             value={password}
                             onChange={e => setPassword(e.target.value)}
+                            autoComplete="current-password"
+                            pattern=".*"
                             required
                         />
                     </div>

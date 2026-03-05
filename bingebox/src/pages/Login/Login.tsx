@@ -55,7 +55,7 @@ function Login() {
                     <p className="login-subtitle">Sign in to your account</p>
                 </div>
 
-                <form onSubmit={handleSubmit} className="login-form">
+                <form onSubmit={handleSubmit} className="login-form" noValidate>
                     <div className="login-field">
                         <label htmlFor="username">Username</label>
                         <input
@@ -78,7 +78,6 @@ function Login() {
                             value={password}
                             onChange={e => setPassword(e.target.value)}
                             autoComplete="current-password"
-                            pattern=".*"
                             required
                         />
                     </div>
